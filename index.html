@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Erin McClafferty — UGC Creator specializing in tech, fitness, pet, food & travel content. Based in San Diego." />
+<title>Erin McClafferty · UGC Creator</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* ── Reset & Base ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:#1C1A12;color:#F2EDE4;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+::selection{background:rgba(143,168,130,.35);color:#F2EDE4}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#1C1A12}
+::-webkit-scrollbar-thumb{background:#8FA882;border-radius:9px}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+/* ── Typography helpers ── */
+.font-display{font-family:'Playfair Display',serif}
+.font-accent{font-family:'Space Grotesk',sans-serif}
+.section-label{font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#8FA882}
+.gradient-text{background:linear-gradient(135deg,#8FA882 0%,#C4A45A 50%,#D5E0CE 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ── Buttons ── */
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;background:#8FA882;color:#1C1A12;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;border-radius:9999px;transition:all .3s;border:none;cursor:pointer}
+.btn-primary:hover{background:#F2EDE4;transform:scale(1.05);box-shadow:0 8px 24px rgba(143,168,130,.2)}
+.btn-outline{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;border:1px solid rgba(242,237,228,.3);color:#F2EDE4;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;border-radius:9999px;transition:all .3s;background:transparent;cursor:pointer}
+.btn-outline:hover{border-color:#8FA882;color:#8FA882}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
+nav.scrolled{background:rgba(28,26,18,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.08em;color:#8FA882;display:flex;align-items:center;gap:.5rem}
+.nav-links{display:flex;align-items:center;gap:2.5rem}
+.nav-links a{font-family:'Space Grotesk',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,237,228,.7);transition:color .2s}
+.nav-links a:hover{color:#F2EDE4}
+.nav-cta{padding:.65rem 1.5rem;background:#8FA882;color:#1C1A12;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;border-radius:9999px;transition:all .3s}
+.nav-cta:hover{background:#F2EDE4}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;background:#1C1A12;padding-top:7rem}
+.hero-orb1{position:absolute;top:25%;left:25%;width:600px;height:600px;border-radius:50%;background:rgba(45,74,62,.2);filter:blur(120px);opacity:.6;pointer-events:none}
+.hero-orb2{position:absolute;bottom:25%;right:25%;width:400px;height:400px;border-radius:50%;background:rgba(143,168,130,.1);filter:blur(100px);opacity:.5;pointer-events:none}
+.hero-grid{position:absolute;inset:0;opacity:.03;pointer-events:none;background-image:linear-gradient(to right,#8FA882 1px,transparent 1px),linear-gradient(to bottom,#8FA882 1px,transparent 1px);background-size:80px 80px}
+.hero-fade{position:absolute;bottom:0;left:0;right:0;height:8rem;background:linear-gradient(to top,#1C1A12,transparent);pointer-events:none}
+.hero-inner{max-width:1280px;margin:0 auto;padding:3rem 2.5rem 6rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.hero-text .prelabel{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;opacity:0;transform:translateY(1.5rem);animation:fadeUp .7s forwards .1s}
+.hero-text h1{opacity:0;transform:translateY(2rem);animation:fadeUp .8s forwards .22s}
+.hero-text h1 .name1{display:block;font-family:'Playfair Display',serif;font-size:clamp(3.5rem,9vw,8rem);font-weight:900;color:#8FA882;line-height:1;letter-spacing:-.02em}
+.hero-text h1 .name2{display:block;font-family:'Playfair Display',serif;font-size:clamp(2.5rem,7vw,6.5rem);font-weight:900;color:#F2EDE4;line-height:1;letter-spacing:-.03em}
+.hero-tagline{margin-top:1.5rem;font-family:'Space Grotesk',sans-serif;font-size:1rem;color:rgba(242,237,228,.6);line-height:1.7;max-width:32rem;opacity:0;transform:translateY(1.5rem);animation:fadeUp .8s forwards .34s}
+.hero-tagline span{color:#8FA882}
+.hero-pills{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.5rem;opacity:0;transform:translateY(1.25rem);animation:fadeUp .8s forwards .46s}
+.pill{padding:.4rem 1rem;border:1px solid rgba(143,168,130,.25);color:rgba(143,168,130,.8);font-family:'Space Grotesk',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;border-radius:9999px;transition:all .2s;cursor:default}
+.pill:hover{border-color:rgba(143,168,130,.6);color:#8FA882;background:rgba(143,168,130,.05)}
+.hero-ctas{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;opacity:0;transform:translateY(1.25rem);animation:fadeUp .8s forwards .58s}
+.hero-social{margin-top:2.5rem;display:flex;align-items:center;gap:1.5rem;opacity:0;transform:translateY:1rem;animation:fadeUp .8s forwards .7s}
+.hero-social a{font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.2em;color:rgba(242,237,228,.4);transition:color .2s;display:flex;align-items:center;gap:.4rem}
+.hero-social a:hover{color:#8FA882}
+.hero-social .sep{width:1rem;height:1px;background:rgba(242,237,228,.2)}
+.hero-social .loc{font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.2em;color:rgba(242,237,228,.4)}
+
+/* ── HERO PHONE ── */
+.hero-visual{display:flex;justify-content:center;align-items:center;opacity:0;transform:translateX(3rem);animation:fadeLeft 1s forwards .3s}
+.phone-wrap{position:relative}
+.phone-glow{position:absolute;inset:0;background:rgba(143,168,130,.15);filter:blur(3rem);border-radius:50%;transform:scale(1.1)}
+.phone-frame{position:relative;width:220px;height:440px;border-radius:38px;border:3px solid #1C1A12;overflow:hidden;box-shadow:0 0 0 1px rgba(143,168,130,.15),0 20px 60px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.05);background:#0a0a0a;animation:float 6s ease-in-out infinite}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:80px;height:26px;background:#1C1A12;border-radius:0 0 18px 18px;z-index:20}
+.phone-btn{position:absolute;right:-4px;top:70px;width:3px;height:28px;background:#1C1A12;border-radius:2px}
+.phone-btn::before{content:'';position:absolute;top:40px;width:3px;height:18px;background:#1C1A12;border-radius:2px}
+.phone-inner{position:absolute;inset:0}
+
+/* ── HERO PHONE: thumbnail image fills frame, click to play ── */
+.phone-inner{position:absolute;inset:0;overflow:hidden;cursor:pointer}
+.phone-inner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.phone-inner .play-hint{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  background:rgba(143,168,130,.9);color:#1C1A12;
+  font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.08em;padding:.35rem 1rem;border-radius:9999px;
+  pointer-events:none;white-space:nowrap;z-index:5;
+  opacity:0;transition:opacity .2s;
+}
+.phone-inner:hover .play-hint{opacity:1}
+
+.stat-card{position:absolute;background:rgba(28,26,18,.9);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:1rem;padding:.75rem 1.25rem;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.stat-card .stat-label{font-family:'Space Grotesk',sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#8FA882;margin-bottom:.2rem}
+.stat-card .stat-val{font-family:'Playfair Display',serif;font-weight:700;font-size:1.5rem;color:#F2EDE4}
+.stat-left{left:-4rem;top:3rem}
+.stat-right{right:-3rem;bottom:5rem}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(242,237,228,.3);opacity:0;animation:fadeUp .8s forwards 1.2s;cursor:pointer;background:none;border:none}
+.scroll-hint span{font-family:'Space Grotesk',sans-serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase}
+.scroll-hint svg{animation:scrollBounce 2s ease-in-out infinite}
+
+/* ── WORK / PORTFOLIO ── */
+#work{padding:7rem 2rem;background:#1C1A12}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-header h2{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:#F2EDE4;line-height:1.1}
+.section-header p{margin-top:1rem;font-family:'Space Grotesk',sans-serif;font-size:.95rem;color:rgba(242,237,228,.5);max-width:36rem;margin-left:auto;margin-right:auto;line-height:1.7}
+.port-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+@media(max-width:680px){.port-grid{grid-template-columns:repeat(2,1fr)}}
+.port-selfie{grid-column:2;cursor:default}
+.port-selfie:hover{transform:none}
+.port-selfie .phone-frame::after{display:none!important}
+@media(max-width:680px){.port-selfie{grid-column:auto}}
+.port-phone{cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:.75rem;transition:transform .3s}
+.port-phone:hover{transform:translateY(-6px)}
+.port-phone .phone-frame{position:relative}
+.port-phone:hover .phone-frame::after{content:'▶ Play';position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);background:rgba(143,168,130,.9);color:#1C1A12;font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.08em;padding:.3rem .75rem;border-radius:9999px;z-index:25;white-space:nowrap;pointer-events:none}
+.port-phone .phone-frame{width:168px;height:336px;animation:none}
+.port-phone .phone-frame:hover{transform:none}
+.port-label{text-align:center}
+.port-label .brand{font-family:'Playfair Display',serif;font-weight:700;font-size:.9rem;color:#F2EDE4}
+.port-label .niche{font-family:'Space Grotesk',sans-serif;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,237,228,.4);margin-top:.1rem}
+
+/* Phone card inner layout */
+.port-phone-inner{position:absolute;inset:0;display:flex;flex-direction:column;background:linear-gradient(135deg,#1a2c1a,#2D4A3E,#0f1f14)}
+.tiktok-top{position:absolute;top:2.2rem;left:.6rem;right:.6rem;display:flex;align-items:center;gap:.4rem}
+.tiktok-avatar{width:32px;height:32px;border-radius:50%;border:1.5px solid white;background:linear-gradient(135deg,#8FA882,#2D4A3E);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;color:white;flex-shrink:0}
+.tiktok-user{font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:600;color:white;line-height:1}
+.tiktok-niche{font-family:'DM Sans',sans-serif;font-size:.5rem;color:rgba(255,255,255,.5);margin-top:.1rem}
+.tiktok-brand-badge{position:absolute;top:2.2rem;right:.6rem;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);border-radius:.35rem;padding:.2rem .45rem;font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;color:white}
+.tiktok-category{position:absolute;top:4.5rem;left:.6rem;right:.6rem;font-family:'Space Grotesk',sans-serif;font-size:.45rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);text-align:center}
+.tiktok-actions{position:absolute;right:.5rem;bottom:3.5rem;display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.tiktok-action{display:flex;flex-direction:column;align-items:center;gap:.15rem}
+.tiktok-action .icon{font-size:.9rem}
+.tiktok-action .count{font-family:'Space Grotesk',sans-serif;font-size:.45rem;color:white}
+.tiktok-caption{position:absolute;bottom:1.8rem;left:.5rem;right:2.5rem;font-family:'DM Sans',sans-serif;font-size:.5rem;line-height:1.4;color:white}
+.tiktok-progress{height:1.5px;background:rgba(255,255,255,.25);border-radius:1px;overflow:hidden;margin-top:.4rem}
+.tiktok-progress-fill{height:100%;background:white;border-radius:1px}
+.tiktok-views{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.2rem}
+.tiktok-views .emoji{font-size:1.2rem}
+.tiktok-views .views{font-family:'Space Grotesk',sans-serif;font-size:.5rem;letter-spacing:.1em;color:rgba(255,255,255,.7)}
+
+/* ── VIDEO PHONE MODAL ── */
+#vid-modal{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.88);backdrop-filter:blur(24px);
+  align-items:center;justify-content:center;
+}
+#vid-modal.open{display:flex}
+.vid-modal-phone{
+  position:relative;width:300px;height:600px;
+  border-radius:44px;border:4px solid #111;
+  overflow:hidden;background:#000;
+  box-shadow:0 0 0 1px rgba(143,168,130,.2),0 32px 80px rgba(0,0,0,.8);
+}
+.vid-modal-notch{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:88px;height:28px;background:#111;
+  border-radius:0 0 20px 20px;z-index:30;pointer-events:none;
+}
+.vid-modal-cover{
+  position:absolute;top:0;left:0;right:0;height:56px;
+  background:#000;z-index:20;pointer-events:none;
+}
+#vid-modal-iframe{
+  position:absolute;inset:0;width:100%;height:100%;border:none;
+}
+.vid-modal-close{
+  position:absolute;top:.7rem;right:.8rem;z-index:35;
+  width:1.8rem;height:1.8rem;border-radius:50%;
+  background:rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.3);
+  color:white;font-size:.8rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.vid-modal-close:hover{background:rgba(255,255,255,.15)}
+
+/* ── HERO PHONE INLINE VIDEO ── */
+.phone-frame.hero-playing .phone-inner{display:none}
+.hero-phone-vid{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center center;
+  display:none;z-index:15;background:#000;
+}
+.phone-frame.hero-playing .hero-phone-vid{display:block}
+.hero-phone-stop{
+  position:absolute;top:10px;right:8px;z-index:35;
+  width:24px;height:24px;border-radius:50%;
+  background:rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.3);
+  color:white;font-size:.65rem;cursor:pointer;
+  display:none;align-items:center;justify-content:center;
+  font-family:'Space Grotesk',sans-serif;
+}
+.phone-frame.hero-playing .hero-phone-stop{display:flex}
+
+/* ── INLINE PHONE VIDEO ── */
+.port-phone-video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center center;
+  display:none;z-index:15;background:#000;
+}
+.port-phone.playing .port-phone-inner{display:none}
+.port-phone.playing .port-phone-video{display:block}
+.port-phone.playing{transform:none!important;cursor:default}
+.port-phone-stop{
+  position:absolute;top:8px;right:6px;z-index:35;
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.3);
+  color:white;font-size:.6rem;cursor:pointer;
+  display:none;align-items:center;justify-content:center;
+  font-family:'Space Grotesk',sans-serif;
+}
+.port-phone.playing .port-phone-stop{display:flex}
+
+/* ── ABOUT ── */
+#about{padding:7rem 2rem;background:linear-gradient(180deg,#1C1A12 0%,#141210 100%)}
+.about-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-phone-col{display:flex;justify-content:center}
+.about-phone-wrap{position:relative}
+.about-phone-glow{position:absolute;inset:0;background:rgba(143,168,130,.12);filter:blur(3rem);border-radius:50%;transform:scale(1.2)}
+.about-phone-frame{position:relative;width:200px;height:400px;border-radius:36px;border:3px solid #1C1A12;overflow:hidden;box-shadow:0 0 0 1px rgba(143,168,130,.15),0 20px 60px rgba(0,0,0,.5)}
+.about-phone-inner{position:absolute;inset:0;background:linear-gradient(135deg,#1a2c1a,#2D4A3E,#0f1f14);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem}
+.about-avatar{width:5rem;height:5rem;border-radius:50%;background:linear-gradient(135deg,#8FA882,#2D4A3E,#C4A45A);display:flex;align-items:center;justify-content:center;box-shadow:0 0 2rem rgba(143,168,130,.3)}
+.about-avatar span{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#F2EDE4}
+.about-handle{font-family:'Space Grotesk',sans-serif;font-size:.6rem;letter-spacing:.15em;color:#8FA882}
+.about-title{font-family:'Playfair Display',serif;font-style:italic;font-size:.8rem;color:rgba(242,237,228,.7)}
+.about-stats-row{display:flex;align-items:center;gap:.5rem;margin-top:.4rem}
+.about-stat{display:flex;flex-direction:column;align-items:center}
+.about-stat .val{font-family:'Space Grotesk',sans-serif;font-size:.65rem;font-weight:700;color:white}
+.about-stat .lbl{font-family:'DM Sans',sans-serif;font-size:.45rem;color:rgba(255,255,255,.5)}
+.about-sep{width:1px;height:1.5rem;background:rgba(255,255,255,.15)}
+.about-content{}
+.about-content .pre{margin-bottom:1.25rem}
+.about-content h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#F2EDE4;line-height:1.15;margin-bottom:1.5rem}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0;padding:2rem 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.about-stat-item .num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#8FA882}
+.about-stat-item .desc{font-family:'Space Grotesk',sans-serif;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.5);margin-top:.2rem}
+.about-body{font-family:'DM Sans',sans-serif;font-size:.9rem;color:rgba(242,237,228,.6);line-height:1.8}
+.about-body p+p{margin-top:1rem}
+.content-types{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.content-type{padding:.35rem 1rem;background:rgba(143,168,130,.08);border:1px solid rgba(143,168,130,.2);border-radius:9999px;font-family:'Space Grotesk',sans-serif;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA882}
+
+/* ── BRANDS MARQUEE ── */
+#brands{padding:5rem 0;background:#141210;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);overflow:hidden}
+#brands .section-header{margin-bottom:3rem}
+#brands .section-header h2{font-size:clamp(1.8rem,3vw,2.5rem)}
+.marquee-outer{position:relative;overflow:hidden}
+.marquee-outer::before,.marquee-outer::after{content:'';position:absolute;top:0;bottom:0;width:8rem;z-index:2;pointer-events:none}
+.marquee-outer::before{left:0;background:linear-gradient(to right,#141210,transparent)}
+.marquee-outer::after{right:0;background:linear-gradient(to left,#141210,transparent)}
+.marquee-track{display:flex;gap:1.5rem;width:max-content;animation:marquee 28s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.brand-chip{display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.75rem 1.25rem;border:1px solid rgba(255,255,255,.07);border-radius:.75rem;background:rgba(255,255,255,.02);min-width:90px;transition:all .3s}
+.brand-chip:hover{border-color:rgba(143,168,130,.3);background:rgba(143,168,130,.04)}
+.brand-chip .b-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.75rem;color:rgba(242,237,228,.8);white-space:nowrap}
+.brand-chip .b-cat{font-family:'Space Grotesk',sans-serif;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.3)}
+
+/* ── CONTACT ── */
+#contact{padding:7rem 2rem;background:linear-gradient(180deg,#141210 0%,#1C1A12 100%)}
+.contact-inner{max-width:1100px;margin:0 auto}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;margin-top:3rem}
+.contact-info h3{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#F2EDE4;margin-bottom:1rem}
+.contact-info p{font-family:'DM Sans',sans-serif;font-size:.9rem;color:rgba(242,237,228,.5);line-height:1.7;margin-bottom:2rem}
+.services-list{display:flex;flex-direction:column;gap:.5rem;margin-bottom:2rem}
+.services-list li{list-style:none;font-family:'DM Sans',sans-serif;font-size:.85rem;color:rgba(242,237,228,.6);display:flex;align-items:center;gap:.5rem}
+.contact-links{display:flex;flex-direction:column;gap:.75rem}
+.contact-link{display:flex;align-items:center;gap.75rem;gap:.75rem;padding:.85rem 1.25rem;border:1px solid rgba(255,255,255,.07);border-radius:.75rem;background:rgba(255,255,255,.02);transition:all .3s}
+.contact-link:hover{border-color:rgba(143,168,130,.3);background:rgba(143,168,130,.04)}
+.contact-link .cl-icon{font-size:1rem;width:1.5rem;text-align:center}
+.contact-link .cl-info{}
+.contact-link .cl-type{font-family:'Space Grotesk',sans-serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,237,228,.3)}
+.contact-link .cl-val{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;color:#F2EDE4;margin-top:.1rem}
+.contact-form{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);border-radius:1.5rem;padding:2rem}
+.contact-form h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#F2EDE4;margin-bottom:1.5rem}
+.form-group{margin-bottom:1rem}
+.form-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:.75rem;padding:.85rem 1.1rem;color:#F2EDE4;font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;transition:all .2s;-webkit-appearance:none}
+.form-input::placeholder{color:rgba(242,237,228,.25)}
+.form-input:focus{border-color:rgba(143,168,130,.5);background:rgba(255,255,255,.06);box-shadow:0 0 0 3px rgba(143,168,130,.08)}
+.form-input option{background:#1C1A12;color:#F2EDE4}
+.form-note{margin-top:1rem;font-family:'DM Sans',sans-serif;font-size:.75rem;color:rgba(242,237,228,.3);text-align:center}
+
+/* ── FOOTER ── */
+footer{background:#1C1A12;border-top:1px solid rgba(255,255,255,.06);padding:2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem}
+.footer-brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.85rem;color:#8FA882;display:flex;align-items:center;gap:.4rem}
+.footer-copy{font-family:'DM Sans',sans-serif;font-size:.75rem;color:rgba(242,237,228,.3)}
+.footer-links{display:flex;gap:1.25rem}
+.footer-links a{font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.4);transition:color .2s}
+.footer-links a:hover{color:#8FA882}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(2rem)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(3rem)}to{opacity:1;transform:translateX(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── SHIMMER ── */
+.shimmer{position:relative;overflow:hidden}
+.shimmer::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.05) 50%,transparent 60%);transform:translateX(-100%);transition:transform .6s ease}
+.shimmer:hover::after{transform:translateX(100%)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:3rem;text-align:center}
+  .hero-visual{justify-content:center;order:-1}
+  .hero-pills{justify-content:center}
+  .hero-ctas{justify-content:center}
+  .hero-social{justify-content:center}
+  .stat-left,.stat-right{display:none}
+  .about-inner{grid-template-columns:1fr;gap:3rem}
+  .about-phone-col{order:-1}
+  .contact-grid{grid-template-columns:1fr;gap:3rem}
+  .nav-links{display:none}
+}
+@media(max-width:600px){
+  .port-grid{grid-template-columns:repeat(2,1fr)}
+  nav{padding:1rem 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">🌙 erincontentco</div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#brands">Brands</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Let's Work</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-fade"></div>
+
+  <div class="hero-inner">
+    <!-- Left: Text -->
+    <div class="hero-text">
+      <div class="prelabel">
+        <span class="section-label">✦ UGC Creator · 2026</span>
+        <span style="width:3rem;height:1px;background:rgba(143,168,130,.4);display:block"></span>
+      </div>
+      <h1>
+        <span class="name1">ERIN</span>
+        <span class="name2">McCLAFFERTY</span>
+      </h1>
+      <p class="hero-tagline">
+        UGC Creator. Entrepreneur. Realtor. Investor. Poet.&nbsp;
+        <span>Bold enough to build it</span>, real enough to show all of it.
+      </p>
+      <div class="hero-pills">
+        <span class="pill">Tech &amp; AI</span>
+        <span class="pill">Fitness</span>
+        <span class="pill">Pet Care</span>
+        <span class="pill">Food &amp; Bev</span>
+        <span class="pill">Travel</span>
+        <span class="pill">Wellness</span>
+      </div>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">See My Work</button>
+        <a href="https://www.tiktok.com/@erincontentco" target="_blank" rel="noopener" class="btn-outline">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          @erincontentco
+        </a>
+      </div>
+      <div class="hero-social">
+        <a href="https://www.instagram.com/erinandthepinots" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @erinandthepinots
+        </a>
+        <span class="sep"></span>
+        <span class="loc">San Diego, CA</span>
+      </div>
+    </div>
+
+    <!-- Right: Phone -->
+    <div class="hero-visual">
+      <div class="phone-wrap">
+        <div class="phone-glow"></div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-btn"></div>
+          <div class="phone-inner" onclick="playHeroVideo('intro.mp4')" style="background:linear-gradient(160deg,#2D4A3E 0%,#1C1A12 100%)">
+            <div class="play-hint">▶ Watch Intro</div>
+          </div>
+        </div>
+        <!-- Stat cards -->
+        <div class="stat-card stat-left">
+          <div class="stat-label">Brands Worked With</div>
+          <div class="stat-val">20+</div>
+        </div>
+        <div class="stat-card stat-right">
+          <div class="stat-label">Niches</div>
+          <div class="stat-val">6</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-hint" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">
+    <span>Scroll</span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+  </button>
+</section>
+
+<!-- PORTFOLIO / WORK -->
+<section id="work">
+  <div class="section-header">
+    <p class="section-label" style="margin-bottom:.75rem">✦ Featured Work</p>
+    <h2 class="font-display">PORTFOLIO</h2>
+    <p>Real content. Real brands. Real results. Each video is crafted to feel like a recommendation from a friend — not an ad.</p>
+  </div>
+  <div class="port-grid">
+
+    <!-- Card 1: goodr -->
+    <div class="port-phone shimmer" onclick="playInPhone(this,'goodr.mp4')">
+      <div class="phone-frame">
+        <div class="phone-notch" style="width:64px;height:22px"></div>
+        <div class="port-phone-inner">
+          <div class="tiktok-top">
+            <div class="tiktok-avatar">E</div>
+            <div><div class="tiktok-user">erincontentco</div><div class="tiktok-niche">Fitness &amp; Fashion</div></div>
+          </div>
+          <div class="tiktok-brand-badge">goodr</div>
+          <div class="tiktok-category">FITNESS &amp; FASHION</div>
+          <div class="tiktok-views"><span class="emoji">🕶️</span><span class="views">1.5M views</span></div>
+          <div class="tiktok-actions">
+            <div class="tiktok-action"><span class="icon">❤️</span><span class="count">121K</span></div>
+            <div class="tiktok-action"><span class="icon">💬</span><span class="count">1.2K</span></div>
+            <div class="tiktok-action"><span class="icon">📤</span><span class="count">Share</span></div>
+          </div>
+          <div class="tiktok-caption">The sunglasses that made me actually enjoy running. No slip, no bounce, zero excuses.<div class="tiktok-progress"><div class="tiktok-progress-fill" style="width:55%"></div></div></div>
+        </div>
+      </div>
+      <div class="port-label"><div class="brand">goodr</div><div class="niche">Fitness &amp; Fashion</div></div>
+    </div>
+
+    <!-- Card 2: Terro -->
+    <div class="port-phone shimmer" onclick="playInPhone(this,'terro.mp4')">
+      <div class="phone-frame">
+        <div class="phone-notch" style="width:64px;height:22px"></div>
+        <div class="port-phone-inner">
+          <div class="tiktok-top">
+            <div class="tiktok-avatar">E</div>
+            <div><div class="tiktok-user">erincontentco</div><div class="tiktok-niche">Home</div></div>
+          </div>
+          <div class="tiktok-brand-badge">Terro</div>
+          <div class="tiktok-category">HOME</div>
+          <div class="tiktok-views"><span class="emoji">🏠</span><span class="views">5.7M views</span></div>
+          <div class="tiktok-actions">
+            <div class="tiktok-action"><span class="icon">❤️</span><span class="count">438K</span></div>
+            <div class="tiktok-action"><span class="icon">💬</span><span class="count">1.2K</span></div>
+            <div class="tiktok-action"><span class="icon">📤</span><span class="count">Share</span></div>
+          </div>
+          <div class="tiktok-caption">Ants were winning. Until I found this. Game over.<div class="tiktok-progress"><div class="tiktok-progress-fill" style="width:70%"></div></div></div>
+        </div>
+      </div>
+      <div class="port-label"><div class="brand">Terro</div><div class="niche">Home</div></div>
+    </div>
+
+    <!-- Card 3: Four Sigmatic -->
+    <div class="port-phone shimmer" onclick="playInPhone(this,'foursigmatic.mp4')">
+      <div class="phone-frame">
+        <div class="phone-notch" style="width:64px;height:22px"></div>
+        <div class="port-phone-inner">
+          <div class="tiktok-top">
+            <div class="tiktok-avatar">E</div>
+            <div><div class="tiktok-user">erincontentco</div><div class="tiktok-niche">Wellness &amp; Drinks</div></div>
+          </div>
+          <div class="tiktok-brand-badge">Four Sigmatic</div>
+          <div class="tiktok-category">WELLNESS &amp; DRINKS</div>
+          <div class="tiktok-views"><span class="emoji">🍄</span><span class="views">3.1M views</span></div>
+          <div class="tiktok-actions">
+            <div class="tiktok-action"><span class="icon">❤️</span><span class="count">247K</span></div>
+            <div class="tiktok-action"><span class="icon">💬</span><span class="count">1.2K</span></div>
+            <div class="tiktok-action"><span class="icon">📤</span><span class="count">Share</span></div>
+          </div>
+          <div class="tiktok-caption">Mushroom coffee changed my mornings. Not going back.<div class="tiktok-progress"><div class="tiktok-progress-fill" style="width:45%"></div></div></div>
+        </div>
+      </div>
+      <div class="port-label"><div class="brand">Four Sigmatic</div><div class="niche">Wellness &amp; Drinks</div></div>
+    </div>
+
+    <!-- Card 4: iWoofi -->
+    <div class="port-phone shimmer" onclick="playInPhone(this,'iwoofi.mp4')">
+      <div class="phone-frame">
+        <div class="phone-notch" style="width:64px;height:22px"></div>
+        <div class="port-phone-inner">
+          <div class="tiktok-top">
+            <div class="tiktok-avatar">E</div>
+            <div><div class="tiktok-user">erincontentco</div><div class="tiktok-niche">Home</div></div>
+          </div>
+          <div class="tiktok-brand-badge">iWoofi</div>
+          <div class="tiktok-category">HOME</div>
+          <div class="tiktok-views"><span class="emoji">🧺</span><span class="views">4.2M views</span></div>
+          <div class="tiktok-actions">
+            <div class="tiktok-action"><span class="icon">❤️</span><span class="count">316K</span></div>
+            <div class="tiktok-action"><span class="icon">💬</span><span class="count">1.2K</span></div>
+            <div class="tiktok-action"><span class="icon">📤</span><span class="count">Share</span></div>
+          </div>
+          <div class="tiktok-caption">This changed my laundry routine completely. No going back.<div class="tiktok-progress"><div class="tiktok-progress-fill" style="width:60%"></div></div></div>
+        </div>
+      </div>
+      <div class="port-label"><div class="brand">iWoofi</div><div class="niche">Home</div></div>
+    </div>
+
+    <!-- Card 5: Veracity Health Co -->
+    <div class="port-phone shimmer" onclick="playInPhone(this,'veracity.mp4')">
+      <div class="phone-frame">
+        <div class="phone-notch" style="width:64px;height:22px"></div>
+        <div class="port-phone-inner">
+          <div class="tiktok-top">
+            <div class="tiktok-avatar">E</div>
+            <div><div class="tiktok-user">erincontentco</div><div class="tiktok-niche">Wellness &amp; Supplements</div></div>
+          </div>
+          <div class="tiktok-brand-badge">Veracity</div>
+          <div class="tiktok-category">WELLNESS &amp; SUPPLEMENTS</div>
+          <div class="tiktok-views"><span class="emoji">🧬</span><span class="views">2.9M views</span></div>
+          <div class="tiktok-actions">
+            <div class="tiktok-action"><span class="icon">❤️</span><span class="count">228K</span></div>
+            <div class="tiktok-action"><span class="icon">💬</span><span class="count">1.2K</span></div>
+            <div class="tiktok-action"><span class="icon">📤</span><span class="count">Share</span></div>
+          </div>
+          <div class="tiktok-caption">I was guessing at my own health. This changed everything.<div class="tiktok-progress"><div class="tiktok-progress-fill" style="width:40%"></div></div></div>
+        </div>
+      </div>
+      <div class="port-label"><div class="brand">Veracity Health Co</div><div class="niche">Wellness &amp; Supplements</div></div>
+    </div>
+
+    <!-- Card 6: Bolt.new -->
+    <div class="port-phone shimmer" onclick="playInPhone(this,'bolt.mp4')">
+      <div class="phone-frame">
+        <div class="phone-notch" style="width:64px;height:22px"></div>
+        <div class="port-phone-inner">
+          <div class="tiktok-top">
+            <div class="tiktok-avatar">E</div>
+            <div><div class="tiktok-user">erincontentco</div><div class="tiktok-niche">AI &amp; Tech</div></div>
+          </div>
+          <div class="tiktok-brand-badge">Bolt.new</div>
+          <div class="tiktok-category">AI &amp; TECH</div>
+          <div class="tiktok-views"><span class="emoji">⚡</span><span class="views">2.4M views</span></div>
+          <div class="tiktok-actions">
+            <div class="tiktok-action"><span class="icon">❤️</span><span class="count">183K</span></div>
+            <div class="tiktok-action"><span class="icon">💬</span><span class="count">1.2K</span></div>
+            <div class="tiktok-action"><span class="icon">📤</span><span class="count">Share</span></div>
+          </div>
+          <div class="tiktok-caption">I built a full app in 20 minutes. No code. No cap.<div class="tiktok-progress"><div class="tiktok-progress-fill" style="width:50%"></div></div></div>
+        </div>
+      </div>
+      <div class="port-label"><div class="brand">Bolt.new</div><div class="niche">AI &amp; Tech</div></div>
+    </div>
+
+    <!-- Card 7: Whisper Heat -->
+    <div class="port-phone shimmer" onclick="playInPhone(this,'whisperheat.mp4')">
+      <div class="phone-frame">
+        <div class="phone-notch" style="width:64px;height:22px"></div>
+        <div class="port-phone-inner">
+          <div class="tiktok-top">
+            <div class="tiktok-avatar">E</div>
+            <div><div class="tiktok-user">erincontentco</div><div class="tiktok-niche">Home &amp; Wellness</div></div>
+          </div>
+          <div class="tiktok-brand-badge">Whisper Heat</div>
+          <div class="tiktok-category">HOME &amp; WELLNESS</div>
+          <div class="tiktok-views"><span class="emoji">🌡️</span><span class="views">1.9M views</span></div>
+          <div class="tiktok-actions">
+            <div class="tiktok-action"><span class="icon">❤️</span><span class="count">154K</span></div>
+            <div class="tiktok-action"><span class="icon">💬</span><span class="count">1.2K</span></div>
+            <div class="tiktok-action"><span class="icon">📤</span><span class="count">Share</span></div>
+          </div>
+          <div class="tiktok-caption">Cold mornings, warm everything. This heating pad is my entire personality now.<div class="tiktok-progress"><div class="tiktok-progress-fill" style="width:35%"></div></div></div>
+        </div>
+      </div>
+      <div class="port-label"><div class="brand">Whisper Heat</div><div class="niche">Home &amp; Wellness</div></div>
+    </div>
+
+    <!-- Card 8: Kowdens -->
+    <div class="port-phone shimmer" onclick="playInPhone(this,'sonodatenight.mp4')">
+      <div class="phone-frame">
+        <div class="phone-notch" style="width:64px;height:22px"></div>
+        <div class="port-phone-inner">
+          <div class="tiktok-top">
+            <div class="tiktok-avatar">E</div>
+            <div><div class="tiktok-user">erincontentco</div><div class="tiktok-niche">Lifestyle &amp; Dining</div></div>
+          </div>
+          <div class="tiktok-brand-badge">Sono</div>
+          <div class="tiktok-category">LIFESTYLE &amp; DINING</div>
+          <div class="tiktok-views"><span class="emoji">🍷</span><span class="views">1.8M views</span></div>
+          <div class="tiktok-actions">
+            <div class="tiktok-action"><span class="icon">❤️</span><span class="count">162K</span></div>
+            <div class="tiktok-action"><span class="icon">💬</span><span class="count">1.1K</span></div>
+            <div class="tiktok-action"><span class="icon">📤</span><span class="count">Share</span></div>
+          </div>
+          <div class="tiktok-caption">Date night done right. This place exceeded every expectation.<div class="tiktok-progress"><div class="tiktok-progress-fill" style="width:55%"></div></div></div>
+        </div>
+      </div>
+      <div class="port-label"><div class="brand">Sono</div><div class="niche">Lifestyle &amp; Dining</div></div>
+    </div>
+
+    <!-- Card 9: Selfie -->
+    <div class="port-phone port-selfie">
+      <div class="phone-frame">
+        <div class="phone-notch" style="width:64px;height:22px"></div>
+        <div class="port-phone-inner" style="background:#000;overflow:hidden">
+          <img src="selfie.jpg" alt="Erin McClafferty" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:1">
+        </div>
+      </div>
+      <div class="port-label"><div class="brand">Erin</div><div class="niche">UGC Creator · San Diego</div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEO PHONE MODAL -->
+<div id="vid-modal" onclick="handleVidModalClick(event)">
+  <div class="vid-modal-phone">
+    <div class="vid-modal-notch"></div>
+    <div class="vid-modal-cover"></div>
+    <iframe id="vid-modal-iframe" src="" allow="autoplay" allowfullscreen></iframe>
+    <button class="vid-modal-close" onclick="closeVidModal()">✕</button>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <!-- Phone mockup -->
+    <div class="about-phone-col">
+      <div class="about-phone-wrap">
+        <div class="about-phone-glow"></div>
+        <div class="about-phone-frame">
+          <div class="phone-notch" style="width:70px;height:24px"></div>
+          <div class="about-phone-inner">
+            <div class="about-avatar"><span>E</span></div>
+            <div class="about-handle">@erincontentco</div>
+            <div class="about-title">UGC Creator</div>
+            <div class="about-stats-row">
+              <div class="about-stat"><div class="val">89K</div><div class="lbl">Likes</div></div>
+              <div class="about-sep"></div>
+              <div class="about-stat"><div class="val">4.1K</div><div class="lbl">Comments</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content -->
+    <div class="about-content">
+      <div class="pre"><span class="section-label">✦ Who I Am</span></div>
+      <h2 class="font-display">About Me</h2>
+      <div class="about-stats">
+        <div class="about-stat-item"><div class="num">20+</div><div class="desc">Brands Worked With</div></div>
+        <div class="about-stat-item"><div class="num">3 Days</div><div class="desc">Avg Turnaround</div></div>
+        <div class="about-stat-item"><div class="num">100%</div><div class="desc">Real. No Filters.</div></div>
+      </div>
+      <div class="about-body">
+        <p>Based in San Diego with ocean views, two kittens, and a life that spans fitness, healthy living, travel, and entrepreneurship — I create UGC that feels like a trusted recommendation from a friend, not an ad.</p>
+        <p>As a realtor, podcaster, and published poet, I bring real storytelling craft to every video — talking head, demo, voiceover, lifestyle — with the professionalism of someone who runs her own business.</p>
+        <p>Bold. Grounded. When we work together, you get content that's thoughtful, fast, and built to actually connect with the people you're trying to reach.</p>
+      </div>
+      <div class="content-types">
+        <span class="content-type">📱 Talking Head</span>
+        <span class="content-type">🎙️ Voiceover</span>
+        <span class="content-type">🏠 Lifestyle UGC</span>
+        <span class="content-type">✈️ Travel</span>
+        <span class="content-type">🐱 Pet Content</span>
+        <span class="content-type">🤖 AI &amp; Tech</span>
+        <span class="content-type">🎬 High Volume</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS MARQUEE -->
+<section id="brands">
+  <div class="section-header">
+    <p class="section-label" style="margin-bottom:.75rem">✦ Portfolio</p>
+    <h2 class="font-display">Brands That Have<br>Trusted Me</h2>
+    <p>From scrappy startups to category leaders — real content that converts across tech, wellness, pets, food, fitness, and travel.</p>
+  </div>
+  <div class="marquee-outer">
+    <div class="marquee-track">
+      <!-- First set -->
+      <div class="brand-chip"><div class="b-name">goodr</div><div class="b-cat">Fitness &amp; Fashion</div></div>
+      <div class="brand-chip"><div class="b-name">Veracity</div><div class="b-cat">Wellness</div></div>
+      <div class="brand-chip"><div class="b-name">Parakeet AI</div><div class="b-cat">Tech</div></div>
+      <div class="brand-chip"><div class="b-name">Memory OS</div><div class="b-cat">AI</div></div>
+      <div class="brand-chip"><div class="b-name">Rolly App</div><div class="b-cat">Tech</div></div>
+      <div class="brand-chip"><div class="b-name">Melody App</div><div class="b-cat">Tech</div></div>
+      <div class="brand-chip"><div class="b-name">Bolt.new</div><div class="b-cat">AI</div></div>
+      <div class="brand-chip"><div class="b-name">Four Sigmatic</div><div class="b-cat">Wellness</div></div>
+      <div class="brand-chip"><div class="b-name">Kowdens</div><div class="b-cat">Wellness</div></div>
+      <div class="brand-chip"><div class="b-name">iFlo</div><div class="b-cat">Home</div></div>
+      <div class="brand-chip"><div class="b-name">VideoUp</div><div class="b-cat">Tech</div></div>
+      <div class="brand-chip"><div class="b-name">Terro</div><div class="b-cat">Home</div></div>
+      <div class="brand-chip"><div class="b-name">StopWoofer</div><div class="b-cat">Pet</div></div>
+      <div class="brand-chip"><div class="b-name">Jupi</div><div class="b-cat">Wellness</div></div>
+      <div class="brand-chip"><div class="b-name">Whisper Heat</div><div class="b-cat">Home</div></div>
+      <div class="brand-chip"><div class="b-name">iWoofi</div><div class="b-cat">Home</div></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="brand-chip"><div class="b-name">goodr</div><div class="b-cat">Fitness &amp; Fashion</div></div>
+      <div class="brand-chip"><div class="b-name">Veracity</div><div class="b-cat">Wellness</div></div>
+      <div class="brand-chip"><div class="b-name">Parakeet AI</div><div class="b-cat">Tech</div></div>
+      <div class="brand-chip"><div class="b-name">Memory OS</div><div class="b-cat">AI</div></div>
+      <div class="brand-chip"><div class="b-name">Rolly App</div><div class="b-cat">Tech</div></div>
+      <div class="brand-chip"><div class="b-name">Melody App</div><div class="b-cat">Tech</div></div>
+      <div class="brand-chip"><div class="b-name">Bolt.new</div><div class="b-cat">AI</div></div>
+      <div class="brand-chip"><div class="b-name">Four Sigmatic</div><div class="b-cat">Wellness</div></div>
+      <div class="brand-chip"><div class="b-name">Kowdens</div><div class="b-cat">Wellness</div></div>
+      <div class="brand-chip"><div class="b-name">iFlo</div><div class="b-cat">Home</div></div>
+      <div class="brand-chip"><div class="b-name">VideoUp</div><div class="b-cat">Tech</div></div>
+      <div class="brand-chip"><div class="b-name">Terro</div><div class="b-cat">Home</div></div>
+      <div class="brand-chip"><div class="b-name">StopWoofer</div><div class="b-cat">Pet</div></div>
+      <div class="brand-chip"><div class="b-name">Jupi</div><div class="b-cat">Wellness</div></div>
+      <div class="brand-chip"><div class="b-name">Whisper Heat</div><div class="b-cat">Home</div></div>
+      <div class="brand-chip"><div class="b-name">iWoofi</div><div class="b-cat">Home</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-header" style="text-align:left">
+      <p class="section-label" style="margin-bottom:.75rem">✦ Work With Me</p>
+      <h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#F2EDE4;line-height:1.1">LET'S CONNECT</h2>
+      <p style="margin-top:1rem">Let's create content that your audience will trust and love. Fast turnarounds, real storytelling, zero fluff.</p>
+    </div>
+    <div class="contact-grid">
+      <!-- Left: info -->
+      <div class="contact-info">
+        <h3 class="font-display">What I Do Best</h3>
+        <ul class="services-list">
+          <li>📱 Talking Head &amp; Demo Videos</li>
+          <li>🎙️ Voiceover &amp; POV Content</li>
+          <li>🏠 Lifestyle &amp; At-Home UGC</li>
+          <li>✈️ Travel &amp; Experience Content</li>
+          <li>🐱 Pet &amp; Family Content</li>
+          <li>🤖 AI &amp; Tech Demos</li>
+          <li>🎬 High Volume UGC</li>
+        </ul>
+        <div class="contact-links">
+          <a href="mailto:erinmcugc@gmail.com" class="contact-link">
+            <span class="cl-icon">✉️</span>
+            <div class="cl-info"><div class="cl-type">Email</div><div class="cl-val">erinmcugc@gmail.com</div></div>
+          </a>
+          <a href="https://www.tiktok.com/@erincontentco" target="_blank" rel="noopener" class="contact-link">
+            <span class="cl-icon">🎵</span>
+            <div class="cl-info"><div class="cl-type">TikTok</div><div class="cl-val">@erincontentco</div></div>
+          </a>
+          <a href="https://www.instagram.com/erinandthepinots" target="_blank" rel="noopener" class="contact-link">
+            <span class="cl-icon">📸</span>
+            <div class="cl-info"><div class="cl-type">Instagram</div><div class="cl-val">@erinandthepinots</div></div>
+          </a>
+        </div>
+      </div>
+      <!-- Right: form -->
+      <div class="contact-form">
+        <h3 class="font-display">Or Reach Me Directly</h3>
+        <form action="mailto:erinmcugc@gmail.com" method="get" enctype="text/plain">
+          <div class="form-group">
+            <input class="form-input" type="text" name="name" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <input class="form-input" type="email" name="email" placeholder="Email Address" required />
+          </div>
+          <div class="form-group">
+            <select class="form-input" name="subject">
+              <option value="" disabled selected>What's this about?</option>
+              <option>UGC Video Package</option>
+              <option>Brand Partnership</option>
+              <option>Rate Sheet Request</option>
+              <option>Custom Content Brief</option>
+              <option>Just Saying Hi 👋</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea class="form-input" name="body" placeholder="Tell me about your brand" rows="4" style="resize:vertical"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center">Send Message</button>
+        </form>
+        <p class="form-note">No spam. Just content. I typically respond within 24 hours. 🌙</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">🌙 erincontentco</div>
+  <div class="footer-copy">© 2026 Erin McClafferty · UGC Creator · San Diego, CA</div>
+  <div class="footer-links">
+    <a href="https://www.tiktok.com/@erincontentco" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://www.instagram.com/erinandthepinots" target="_blank" rel="noopener">Instagram</a>
+    <a href="mailto:erinmcugc@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+// ── NAV scroll ──
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── HERO PHONE INLINE VIDEO ──
+function playHeroVideo(src) {
+  var frame = document.querySelector('#hero .phone-frame');
+  var vid = frame.querySelector('.hero-phone-vid');
+  if (!vid) {
+    vid = document.createElement('video');
+    vid.className = 'hero-phone-vid';
+    vid.setAttribute('playsinline', '');
+    vid.setAttribute('controls', '');
+    vid.setAttribute('preload', 'none');
+    frame.appendChild(vid);
+    var btn = document.createElement('button');
+    btn.className = 'hero-phone-stop';
+    btn.innerHTML = '✕';
+    btn.addEventListener('click', function(e) { e.stopPropagation(); stopHeroVideo(); });
+    frame.appendChild(btn);
+  }
+  vid.src = src;
+  vid.play().catch(function(){});
+  frame.classList.add('hero-playing');
+}
+function stopHeroVideo() {
+  var frame = document.querySelector('#hero .phone-frame');
+  var vid = frame.querySelector('.hero-phone-vid');
+  if (vid) { vid.pause(); vid.removeAttribute('src'); vid.load(); }
+  frame.classList.remove('hero-playing');
+}
+
+// ── INLINE PHONE VIDEO ──
+function playInPhone(card, src) {
+  document.querySelectorAll('.port-phone.playing').forEach(c => stopInPhone(c));
+  var frame = card.querySelector('.phone-frame');
+  var vid = frame.querySelector('.port-phone-video');
+  if (!vid) {
+    vid = document.createElement('video');
+    vid.className = 'port-phone-video';
+    vid.setAttribute('playsinline', '');
+    vid.setAttribute('controls', '');
+    vid.setAttribute('preload', 'none');
+    frame.appendChild(vid);
+    var btn = document.createElement('button');
+    btn.className = 'port-phone-stop';
+    btn.innerHTML = '✕';
+    btn.addEventListener('click', function(e) { e.stopPropagation(); stopInPhone(card); });
+    frame.appendChild(btn);
+  }
+  vid.src = src;
+  vid.play().catch(function(){});
+  card.classList.add('playing');
+}
+
+function stopInPhone(card) {
+  var vid = card.querySelector('.port-phone-video');
+  if (vid) { vid.pause(); vid.removeAttribute('src'); vid.load(); }
+  card.classList.remove('playing');
+}
+</script>
+</body>
+</html>
